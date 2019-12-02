@@ -65,3 +65,15 @@ test('floating point numbers', ()=>{
     // expect(value).toBe(0.3);
     expect(value).toBeCloseTo(0.3);
 })
+
+
+// Matchers: Arrays and Iterables
+test('array has word earth',()=>{
+    const arr = [
+        'hello',
+        'hai',
+        'earth',
+    ];
+
+    expect(arr).toContain('earth');
+})
