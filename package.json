@@ -10,5 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "fetch": "^1.1.0",
+    "node-fetch": "^2.6.0"
   }
 }

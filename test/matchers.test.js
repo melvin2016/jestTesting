@@ -1,7 +1,9 @@
+const fetchNewsData = require('../app/fetchNewsData');
+
+// Sum module
 const sum = require('../app/sum');
 
 // Matchers: Common
-
 test('adds 1 + 2 and returns 3', ()=>{
     expect(sum(1,2)).toBe(3);
 });
@@ -21,14 +23,13 @@ test('object assignment',()=>{
     })
 });
 
-test('adding possitive numbers is not zero',()=>{
+test('adding positive numbers is not zero',()=>{
     const a = 1;
     const b = 2;
     expect(a+b).not.toBe(0);
 });
 
 // Matchers: Truthiness
-
 test('null verification',()=>{
     const n = null;
     expect(n).toBeNull();
@@ -68,7 +69,6 @@ test('floating point numbers', ()=>{
 
 
 // Matchers: Arrays and Iterables
-
 test('array has word earth',()=>{
     const arr = [
         'hello',
@@ -80,7 +80,6 @@ test('array has word earth',()=>{
 });
 
 // Matchers: Errors
-
 function NotFound404(){
     throw new Error('404 ~ Not Found');
 }
@@ -92,3 +91,19 @@ test('throws an error of 404 not found',()=>{
     expect(NotFound404).toThrow(/404/);
 });
 
+// Matchers: Asynchronous Code
+test('have property author of value Joseph Young',()=>{
+    return fetchNewsData()
+            .then(data => {
+                expect(data.articles[0].author).toBe('Brad Keoun');
+            });
+});
+
+test("doesn't have property author of value Mikha", ()=>{
+    return fetchNewsData()
+            .then(data => {
+                expect(data.articles[0].author).not.toBe('Mikha');
+            })
+
+
+})
