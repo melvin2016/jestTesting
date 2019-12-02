@@ -92,18 +92,12 @@ test('throws an error of 404 not found',()=>{
 });
 
 // Matchers: Asynchronous Code
-test('have property author of value Joseph Young',()=>{
-    return fetchNewsData()
-            .then(data => {
-                expect(data.articles[0].author).toBe('Brad Keoun');
-            });
+test('have property author of value Brad Keoun',async () => {
+    const data = await fetchNewsData();
+    expect(data.articles[0].author).toBe('Brad Keoun');
 });
 
-test("doesn't have property author of value Mikha", ()=>{
-    return fetchNewsData()
-            .then(data => {
-                expect(data.articles[0].author).not.toBe('Mikha');
-            })
-
-
+test("doesn't have property author of value Mikha",async () => {
+    const data = await fetchNewsData();
+    expect(data.articles[0].author).not.toBe('Mikha');
 })
