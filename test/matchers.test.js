@@ -68,6 +68,7 @@ test('floating point numbers', ()=>{
 
 
 // Matchers: Arrays and Iterables
+
 test('array has word earth',()=>{
     const arr = [
         'hello',
@@ -76,4 +77,18 @@ test('array has word earth',()=>{
     ];
 
     expect(arr).toContain('earth');
-})
+});
+
+// Matchers: Errors
+
+function NotFound404(){
+    throw new Error('404 ~ Not Found');
+}
+
+test('throws an error of 404 not found',()=>{
+    expect(NotFound404).toThrow();
+    expect(NotFound404).toThrow(Error);
+    expect(NotFound404).toThrow('404 ~ Not Found');
+    expect(NotFound404).toThrow(/404/);
+});
+
